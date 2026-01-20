@@ -37,7 +37,7 @@ I designed a 3-page interactive Power BI dashboard focused on:
     ![A picture of my operational diagnostics page](operational_diagnostics.png)
      Deep dive into Seller vs. Carrier performance and examining the correlation between Shipping Price and Lead Time.
 3.  **Reliability and Trends:** 
-    ![A picture of my reliability and trends page](Dreliability_trends.png)
+    ![A picture of my reliability and trends page](reliability_trends.png)
     Analysis of average lead time throughout quarters and months.
 3.  **KPIs per state:** 
     ![A picture of my KPIs per state page](reliability_trends.png)
