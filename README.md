@@ -25,24 +25,24 @@ This project addresses the complex logistics challenges of a large-scale marketp
 ### Data Engineering & Modeling
 * **ETL & Engineering:** Used **MySQL** for data cleaning and row-level calculations (e.g., calculating lead time intervals) before ingestion; implemented CTEs and window functions for better visualization performance and reusability. 
 * **Visualization:** Used **Power BI** to visualize data and create a dashboard, utilizing some minor data cleaning for better readability.
+* **AI usage**: Gemini 3 was used to assist in improving recommendations, organizing markdown code, rephrasing sentences, and debugging SQL and DAX code. 
 
-###
+---
 
 ### Dashboard Design
 I designed a 3-page interactive Power BI dashboard focused on:
 1.  **Executive Status:**
-    ![Logistics Dashboard - main](images/executive_dashboard_main.png).
+    ![Logistics Dashboard - main](images/executive_dashboard_main.png)
     High-level KPIs (On-Time Delivery %, Lead Time, Freight-to-Price Ratio).
 2.  **Operational Diagnostics:** 
-    ![A picture of my operational diagnostics page](operational_diagnostics.png)
+    https://github.com/wonderpan/Ecommerce-Logistics/blob/main/images/operational_diagnostics.png?raw=true
      Deep dive into Seller vs. Carrier performance and examining the correlation between Shipping Price and Lead Time.
-3.  **Reliability and Trends:** 
-    ![A picture of my reliability and trends page](reliability_trends.png)
+3.  **Reliability and Trends:**
+   https://github.com/wonderpan/Ecommerce-Logistics/blob/main/images/reliability_trends.png?raw=true
     Analysis of average lead time throughout quarters and months.
-3.  **KPIs per state:** 
-    ![A picture of my KPIs per state page](reliability_trends.png)
+3.  **KPIs per state:**
+    https://github.com/wonderpan/Ecommerce-Logistics/blob/main/images/kpis_per_state.png
     Average KPIs per state.
-
 
 ---
 
@@ -53,7 +53,8 @@ Based on the data trends, the following trends were analyzed:
 * **Last-Mile Transit As The Critical Constraint in Delivery Velocity** While seller processing times remain consistent throughout all state at around 3 days, **last-mile carrier transit varies highly by state** and is the **primary driver of lead time**. Much as with the previous point, these variances typically correspond to regions in terms of economic activity and population size, with Southeastern states maintaining relatively low processing times and Northern states maintaining very high numbers. It must be noted, though, that the last few months of data seem to indicate **decreasing last-mile carrier transit times,** although there are not enough data points to conclusively say that this is a long-term trend.
 * **Freight Costs: Paying More for Longer Wait Times:** There is a positive correlation between Freight Value and Lead Times, meaning that **as freight costs increase, lead times tend to as well,**, especially when lead time pass the 15-20 day mark. As with previous points, variances typically align with regions, with the North spending more for slower deliveries and the Southeast paying less for faster lead times. 
 * **Q1 and Q4: Slowest Times of the Year:** Average lead times are at its highest during the **first and fourth quarter** of the year. Q4 results are most likely due to the holiday season, while Q1 results may be due to Carnival, with businesses operating at reduced capacity or closing, sometimes for a full week. Additionally, Q1 is one of the wettest times of the year and is also back to school season, which may put more pressure on distribution networks. 
-* **Lead Time Stability:** A frequency distribution of lead times suggests overall **stability and consistency**, most of which end up around the 5-15 day lead time period. 
+* **Lead Time Stability:** A frequency distribution of lead times suggests overall **stability and consistency**, most of which end up around the 5-15 day lead time period.
+  
 ---
 
 ## Strategic Recommendations
@@ -62,6 +63,14 @@ Based on the data trends, the following actions are proposed:
 * **Identify and Address Bottlenecks:**  Building out infrastructure is probably going to take a while, and may not even be feasible at the moment.  While the infrastructure is being built out, it would pay to have a comprehensive audit of the company's internal supply chain and operations systems, as internal processes may be playing a role in delays and long lead times. Once issues in the system have been identified, reengineer processes and systems for further optimization.
 * **Optimize Carrier Dispatch:** Work with government agencies, logistics providers and last-mile couriers to address external issues that may be causing high lead times. For providers, lead times could be improved through strict implementation of service-level agreements and performance-based incentives.
 * **Seasonal Capacity Planning:** Scale carrier capacity and adjust customer ETA expectations during identified peak Q1 and Q4 periods.
+
+---
+
+## Limitations, Points for Improvement
+While this analysis provides a clear overview of logistics performance, certain data constraints and external variables must be acknowledged to contextualize the findings.
+* **Data Scoping:** To optimize performance, the analysis was restricted to specific relational tables relevant to logistics. Future iterations could integrate customer review sentiment or payment methods to find correlations between delivery speed and financial outcomes.
+* **Dashboard Granularity**: The current dashboard prioritizes high-level executive KPIs. Adding drill-through pages for specific carrier-to-city routes would allow for more tactical operational planning.
+* **Historical Nature of Data:** The dataset covers 2016–2018. The insights reflect a specific historical period and may not account for recent infrastructure improvements or changes in the Brazilian logistics landscape.\
 
 ---
 
@@ -76,3 +85,37 @@ To interact with the analysis and view the dashboard:
     * Open the `.pbix` file located in the `/dashboard` folder.
 3.  **Database (Optional):** * The raw cleaning scripts are located in the `/sql` folder for those who wish to see the data transformation logic.
 
+### File/Folder, Purpose
+**images/** - Contains high-resolution screenshots of the Power BI dashboard, focusing on regional logistics performance and delivery reliability trends.
+**olist_files** - The source Brazilian e-commerce dataset containing 100k+ orders. This serves as the raw input for the analysis.
+**cte_view.sql** - The primary SQL transformation script. This file uses Common Table Expressions (CTEs) to clean raw data and engineer KPIs such as average lead time and delivery margin.
+**olist_bi_proj.pbix** -The complete Power BI report file, including the underlying data model, DAX measures, and interactive reporting layers.
+
+## Project Structure
+
+This repository is organized to separate raw data, processing scripts, and final visualization assets for easy navigation.
+
+```text
+├── images/                        # Visual assets for documentation
+│   ├── executive_dashboard_main.png
+│   ├── executive_overview_alagoas.png
+│   ├── executive_overview_amapa.png
+│   ├── executive_overview_amazonas.png
+│   ├── executive_overview_para.png
+│   ├── executive_overview_roraima.png
+│   ├── kpis_per_state.png
+│   ├── operational_diagnostics.png
+│   └── reliability_trends.png
+├── olist_files/                   # Raw relational dataset (CSV format)
+│   ├── olist_customers_dataset.csv
+│   ├── olist_geolocation_dataset.csv
+│   ├── olist_order_items_dataset.csv
+│   ├── olist_order_payments_dataset.csv
+│   ├── olist_order_reviews_dataset.csv
+│   ├── olist_orders_dataset.csv
+│   ├── olist_products_dataset.csv
+│   ├── olist_sellers_dataset.csv
+│   └── product_category_name_translation.csv
+├── cte_view.sql                   # SQL scripts for data transformation and KPIs
+├── olist_bi_proj.pbix             # Interactive Power BI dashboard file
+└── README.md                      # Project documentation and business analysis
