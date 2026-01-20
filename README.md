@@ -1,5 +1,5 @@
 # Logistics Health Case Study: Brazilian E-Commerce
-**Data Source:** (https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)[Olist Brazilian E-Commerce Public Dataset] 
+**Data Source:** (https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
 ---
 
@@ -31,16 +31,16 @@ This project addresses the complex logistics challenges of a large-scale marketp
 ### Dashboard Design
 I designed a 3-page interactive Power BI dashboard focused on:
 1.  **Executive Status:**
-    ![Logistics Dashboard - main](Documents/Data Projects/Olist/images/executive_dashboard_main.png).
+    ![Logistics Dashboard - main](images/executive_dashboard_main.png).
     High-level KPIs (On-Time Delivery %, Lead Time, Freight-to-Price Ratio).
 2.  **Operational Diagnostics:** 
-    ![A picture of my operational diagnostics page](Documents/Data Projects/Olist/images/operational_diagnostics.png)
+    ![A picture of my operational diagnostics page](operational_diagnostics.png)
      Deep dive into Seller vs. Carrier performance and examining the correlation between Shipping Price and Lead Time.
 3.  **Reliability and Trends:** 
-    ![A picture of my reliability and trends page](Documents/Data Projects/Olist/images/reliability_trends.png)
+    ![A picture of my reliability and trends page](Dreliability_trends.png)
     Analysis of average lead time throughout quarters and months.
 3.  **KPIs per state:** 
-    ![A picture of my KPIs per state page](Documents/Data Projects/Olist/images/reliability_trends.png)
+    ![A picture of my KPIs per state page](reliability_trends.png)
     Average KPIs per state.
 
 
@@ -70,7 +70,7 @@ To interact with the analysis and view the dashboard:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/YourUsername/Logistics-Optimization-Case-Study.git](https://github.com/YourUsername/Logistics-Optimization-Case-Study.git)
+    git clone [https://github.com/wonderpan/Ecommerce-Logistics.git](https://github.com/YourUsername/Ecommerce-Logistics.git)
     ```
 2.  **Open the Dashboard:** * Ensure you have [Power BI Desktop](https://powerbi.microsoft.com/desktop/) installed.
     * Open the `.pbix` file located in the `/dashboard` folder.
